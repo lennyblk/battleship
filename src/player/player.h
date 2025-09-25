@@ -7,3 +7,7 @@ typedef struct{
     Ship* ships;
     char* name;
 } Player;
+
+
+void placeShips(Player* player, int nb_ships);
+int placeShipOnBoard(Board* board, Ship* ship);
