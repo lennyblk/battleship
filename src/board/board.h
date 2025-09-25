@@ -1,5 +1,6 @@
 #ifndef BOARD_H
 #define BOARD_H
+#include "../config/config.h"
 
 typedef struct {
     int x;
@@ -9,7 +10,7 @@ typedef struct {
 typedef struct{
     int width;
     int height;
-    char grid[10][10];
+    char grid[WIDTH][HEIGHT];
 } Board;
 
 void initBoard(Board* board);
