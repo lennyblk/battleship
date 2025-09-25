@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "board.h"
-
-#define WIDTH 10
-#define HEIGHT 10
+#include "../config/config.h"
 
 void initBoard(Board* board) {
     board->width = WIDTH;

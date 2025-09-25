@@ -1,4 +1,12 @@
+#ifndef SHIP_H
+#define SHIP_H
+
 #include "../board/board.h"
+
+typedef struct{
+    int x;
+    int y;
+} Coordinate;
 
 typedef struct{
     Coordinate position;
@@ -8,4 +16,12 @@ typedef struct{
     int orientation;
 } Ship;
 
-void initShips(Ship* ships, int numShips);
+// Prototypes de fonctions
+void initShip(Ship* ship, int size, Coordinate position, int orientation);
+void initCoordinate(Coordinate* coord, int x, int y);
+
+#endif
+
+void initShip(Ship* ship, int size, Coordinate position, int orientation);
+
+void initCoordinate(Coordinate* coord, int x, int y);
