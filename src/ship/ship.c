@@ -15,7 +15,11 @@ void initCoordinate(Coordinate* coord, int x, int y) {
     coord->y = y;
 };
 
-bool shoot(Ship* ships, int nb_ships, Board* board, int x, int y) {
+bool shoot(Ship* ships, int nb_ships, Board* board) {
+
+    int x, y;
+    printf("Entrez les coordonnées de votre tir (x y): ");
+    scanf("%d %d", &x, &y);
 
     if (x < 0 || x >= board->width || y < 0 || y >= board->height) {
         return false;
