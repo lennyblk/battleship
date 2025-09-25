@@ -1,0 +1,9 @@
+#include "../board/board.h"
+#include "../ship/ship.h"
+
+
+typedef struct{
+    Board* board;
+    Ship* ships;
+    char* name;
+} Player;
