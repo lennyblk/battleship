@@ -1,24 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "board.h"
-#define HEIGHT 10
-#define WIDTH 10
+#include "board/board.h"
 
 int main() {
+    Board* board = malloc(sizeof(Board));
+    
+    initBoard(board);
+    drawBoard(board);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    free(board);
     return 0;
 }
