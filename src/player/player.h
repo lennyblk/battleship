@@ -1,3 +1,6 @@
+#ifndef PLAYER_H
+#define PLAYER_H
+
 #include "../board/board.h"
 #include "../ship/ship.h"
 
@@ -11,3 +14,6 @@ typedef struct{
 
 void placeShips(Player* player, int nb_ships);
 int placeShipOnBoard(Board* board, Ship* ship);
+void initPlayer(Player* player);
+
+#endif
