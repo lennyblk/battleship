@@ -7,7 +7,7 @@
 
 int main() {
 
-    int ship_sizes[NB_SHIPS] = {2, 3, 4};
+    int ship_sizes[NB_SHIPS] = {2};//, 3, 4};
 
 
     Player* player1 = malloc(sizeof(Player));
@@ -23,12 +23,7 @@ int main() {
     
     placeShips(player1, NB_SHIPS);
 
-
-    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-
     printf("Au tour du joueur 2 de placer ses bateaux.\n");
-
-
     
     Player* player2 = malloc(sizeof(Player));
     initPlayer(player2);
@@ -47,10 +42,19 @@ int main() {
     while(gagnant == 0) {
         
         while(shoot(player2->ships, NB_SHIPS, player2->board)) {
+            clearScreen();
             printf("Touché!\n");
+            drawBoardEnemy(player2->board);
         } 
+        clearScreen();
         printf("Manqué!\n");
-        
+
+        drawBoardEnemy(player2->board);
+        printf("Au tour de player 2 : Cliquez sur une touche et appuyez sur Entrée pour voir votre plateau.\n");
+        fflush(stdin);
+        char dummy;
+        scanf(" %c", &dummy);
+
         drawBoard(player2->board);
 
         int all_sunk = 1;
@@ -66,11 +70,20 @@ int main() {
         }
 
         while (shoot(player1->ships, NB_SHIPS, player1->board)) {
+            clearScreen();
             printf("Touché!\n");
+            drawBoardEnemy(player1->board);
         }
+        clearScreen();
         printf("Manqué!\n");
 
         drawBoard(player1->board);
+
+        drawBoardEnemy(player1->board);
+        printf("Au tour de player 1 : Cliquez sur une touche et appuyez sur Entrée pour voir votre plateau.\n");
+        fflush(stdin);
+        scanf(" %c", &dummy);
+
 
         all_sunk = 1;
         for (int i = 0; i < NB_SHIPS; i++) {

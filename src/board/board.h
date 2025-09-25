@@ -16,5 +16,6 @@ typedef struct{
 
 void initBoard(Board* board);
 void drawBoard(Board* board);
+void drawBoardEnemy(Board* board);
 
 #endif

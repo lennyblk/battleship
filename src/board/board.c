@@ -31,3 +31,25 @@ void drawBoard(Board* board) {
     }
     printf("\n");
 }
+
+void drawBoardEnemy(Board* board) {
+    printf("\n");
+    printf("  ");
+    for (int i = 0; i < board->width; i++) {
+        printf("%d ", i);
+    }
+    printf("\n");
+
+    for (int i = 0; i < board->height; i++) {
+        printf("%d ", i);
+        for (int j = 0; j < board->width; j++) {
+            if (board->grid[i][j] == 'S') {
+                printf("- ");
+            } else {
+            printf("%c ", board->grid[i][j]);
+            }
+        }
+        printf("\n");
+    }
+    printf("\n");
+}

@@ -1,5 +1,14 @@
 #include <stdio.h>
 #include "ship.h"
+#include <stdlib.h>
+
+void clearScreen() {
+#ifdef _WIN32
+    system("cls"); 
+#else
+    system("clear");
+#endif
+}
 
 
 void initShip(Ship* ship, int size, Coordinate position, int orientation) {

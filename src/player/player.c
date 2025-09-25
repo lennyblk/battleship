@@ -51,16 +51,16 @@ void placeShips(Player* player, int nb_ships) {
             initShip(ship, ship->size, position, orientation);
 
             if (placeShipOnBoard(player->board, ship)) {
-                printf("\n✅ Bateau %d placé avec succès !\n", i + 1);
+                printf("\nBateau %d placé avec succès !\n", i + 1);
                 drawBoard(player->board);
                 placed = true;
             } else {
-                printf("❌ Impossible de placer le bateau à cette position. Réessayez.\n");
+                printf("Impossible de placer le bateau à cette position. Réessayez.\n");
             }
         }
     }
-    
-    printf("\n🎉 Tous les bateaux ont été placés avec succès !\n");
+
+    printf("\nTous les bateaux ont été placés avec succès !\n");
 }
 
 int placeShipOnBoard(Board* board, Ship* ship) {
