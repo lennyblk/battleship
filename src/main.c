@@ -46,45 +46,43 @@ int main() {
     int gagnant = 0;
     while(gagnant == 0) {
         
-        int all_sunk = 1;
-
         while(shoot(player2->ships, NB_SHIPS, player2->board)) {
             printf("Touché!\n");
-            for (int i = 0; i < NB_SHIPS; i++) {
-                if (!player2->ships[i].sunk) {
-                    all_sunk = 0;
-                    break;
-                }
-            }
-            if (all_sunk) {
-                gagnant = 1;
-                break;
-            }
         } 
         printf("Manqué!\n");
         
         drawBoard(player2->board);
 
-        all_sunk = 1;
-        while (shoot(player1->ships, NB_SHIPS, player1->board)) {
-            printf("Touché!\n");
-            for (int i = 0; i < NB_SHIPS; i++) {
-                if (!player1->ships[i].sunk) {
-                    all_sunk = 0;
-                    break;
-                }
-            }
-            if (all_sunk) {
-                gagnant = 2;
+        int all_sunk = 1;
+        for (int i = 0; i < NB_SHIPS; i++) {
+            if (!player2->ships[i].sunk) {
+                all_sunk = 0;
                 break;
             }
+        }
+        if (all_sunk) {
+            gagnant = 1;
+            break;
+        }
+
+        while (shoot(player1->ships, NB_SHIPS, player1->board)) {
+            printf("Touché!\n");
         }
         printf("Manqué!\n");
 
         drawBoard(player1->board);
 
-        
-        
+        all_sunk = 1;
+        for (int i = 0; i < NB_SHIPS; i++) {
+            if (!player1->ships[i].sunk) {
+                all_sunk = 0;
+                break;
+            }
+        }
+        if (all_sunk) {
+            gagnant = 2;
+            break;
+        }
     }
     printf("Le joueur %d a gagné ! Félicitations %s!\n", gagnant, gagnant == 1 ? player1->name : player2->name);
 
