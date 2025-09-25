@@ -1,3 +1,6 @@
+#ifndef BOARD_H
+#define BOARD_H
+
 typedef struct {
     int x;
     int y;
@@ -11,3 +14,5 @@ typedef struct{
 
 void initBoard(Board* board);
 void drawBoard(Board* board);
+
+#endif

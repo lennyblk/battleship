@@ -4,11 +4,6 @@
 #include "../board/board.h"
 
 typedef struct{
-    int x;
-    int y;
-} Coordinate;
-
-typedef struct{
     Coordinate position;
     int size;
     int hits;

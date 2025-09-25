@@ -5,21 +5,11 @@
 
 int main() {
     Board* board = malloc(sizeof(Board));
-    
     initBoard(board);
-    drawBoard(board);
-
-    free(board);
-
-
-    Board* board = malloc(sizeof(Board));
-    initBoard(board);
-
 
     Ship* ship = malloc(sizeof(Ship));
 
     Coordinate* coord = malloc(sizeof(Coordinate));
-    
     initCoordinate(coord, 0, 0);
     
     initShip(ship, 5, *coord, 0);
@@ -30,14 +20,7 @@ int main() {
 
     free(board);
     free(ship);
-
-
-
-
-
-
-
-
+    free(coord);
 
     return 0;
 }
