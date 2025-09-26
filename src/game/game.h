@@ -9,5 +9,5 @@ typedef struct {
 } Game;
 
 void initGame(Game* game);
-
+int all_sunk(Player* player, int nb_ships);
 #endif

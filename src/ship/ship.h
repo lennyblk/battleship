@@ -14,7 +14,7 @@ typedef struct{
 
 void initShip(Ship* ship, int size, Coordinate position, int orientation);
 void initCoordinate(Coordinate* coord, int x, int y);
-bool shoot(Ship* ships, int nb_ships, Board* board);
+bool shoot(Ship* ships, int nb_ships, Board* board, char* shooter_name);
 void clearScreen();
 
 #endif

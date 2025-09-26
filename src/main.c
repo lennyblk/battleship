@@ -4,6 +4,7 @@
 #include "ship/ship.h"
 #include "player/player.h" 
 #include "config/config.h"
+#include "game/game.h"
 
 int main() {
 
@@ -23,6 +24,8 @@ int main() {
     
     placeShips(player1, NB_SHIPS);
 
+    clearScreen();
+
     printf("Au tour du joueur 2 de placer ses bateaux.\n");
     
     Player* player2 = malloc(sizeof(Player));
@@ -38,14 +41,22 @@ int main() {
     
     placeShips(player2, NB_SHIPS);
 
+    clearScreen();
+    printf("Début de la partie !\n");
     int gagnant = 0;
     while(gagnant == 0) {
         
-        while(shoot(player2->ships, NB_SHIPS, player2->board)) {
+        while(shoot(player2->ships, NB_SHIPS, player2->board, player1->name)) {
             clearScreen();
             printf("Touché!\n");
             drawBoardEnemy(player2->board);
+            if (all_sunk(player2, NB_SHIPS)) {
+                gagnant = 1;
+                break;
+            }
         } 
+        if(gagnant != 0) break;
+        
         clearScreen();
         printf("Manqué!\n");
 
@@ -57,23 +68,17 @@ int main() {
 
         drawBoard(player2->board);
 
-        int all_sunk = 1;
-        for (int i = 0; i < NB_SHIPS; i++) {
-            if (!player2->ships[i].sunk) {
-                all_sunk = 0;
-                break;
-            }
-        }
-        if (all_sunk) {
-            gagnant = 1;
-            break;
-        }
 
-        while (shoot(player1->ships, NB_SHIPS, player1->board)) {
+        while (shoot(player1->ships, NB_SHIPS, player1->board, player2->name)) {
             clearScreen();
             printf("Touché!\n");
             drawBoardEnemy(player1->board);
+            if (all_sunk(player1, NB_SHIPS)) {
+                gagnant = 2;
+                break;
+            }
         }
+        if(gagnant != 0) break;
         clearScreen();
         printf("Manqué!\n");
 
@@ -85,17 +90,6 @@ int main() {
         scanf(" %c", &dummy);
 
 
-        all_sunk = 1;
-        for (int i = 0; i < NB_SHIPS; i++) {
-            if (!player1->ships[i].sunk) {
-                all_sunk = 0;
-                break;
-            }
-        }
-        if (all_sunk) {
-            gagnant = 2;
-            break;
-        }
     }
     printf("Le joueur %d a gagné ! Félicitations %s!\n", gagnant, gagnant == 1 ? player1->name : player2->name);
 

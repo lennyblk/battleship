@@ -24,16 +24,20 @@ void initCoordinate(Coordinate* coord, int x, int y) {
     coord->y = y;
 };
 
-bool shoot(Ship* ships, int nb_ships, Board* board) {
+bool shoot(Ship* ships, int nb_ships, Board* board, char* shooter_name) {
 
     int x, y;
-    printf("Entrez les coordonnées de votre tir (x y): ");
+    printf("%s Entrez les coordonnées de votre tir (x y): ", shooter_name);
     scanf("%d %d", &x, &y);
 
     if (x < 0 || x >= board->width || y < 0 || y >= board->height) {
+        printf("Coordonnées hors limites. Veuillez réessayer.\n");
+        return shoot(ships, nb_ships, board, shooter_name);
+    }
+    if(board->grid[y][x] == 'X' || board->grid[y][x] == 'O') {
+        printf("Vous avez déjà tiré à cette position...\n");
         return false;
     }
-    
     for (int i = 0; i < nb_ships; i++) {
         Ship* ship = &ships[i];
         
