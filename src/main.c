@@ -8,7 +8,7 @@
 
 int main() {
 
-    int ship_sizes[NB_SHIPS] = {2};//, 3, 4};
+    int ship_sizes[NB_SHIPS] = {2, 3, 4};
 
 
     Player* player1 = malloc(sizeof(Player));
