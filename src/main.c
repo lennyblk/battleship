@@ -67,10 +67,9 @@ int main() {
         scanf(" %c", &dummy);
 
         drawBoard(player2->board);
-
+        clearScreen();
 
         while (shoot(player1->ships, NB_SHIPS, player1->board, player2->name)) {
-            clearScreen();
             printf("Touché!\n");
             drawBoardEnemy(player1->board);
             if (all_sunk(player1, NB_SHIPS)) {
@@ -93,12 +92,11 @@ int main() {
     }
     printf("Le joueur %d a gagné ! Félicitations %s!\n", gagnant, gagnant == 1 ? player1->name : player2->name);
 
-    free(player1->ships);
-    free(player1->board);
+    freePlayer(player1);
     free(player1);
-    free(player2->ships);
-    free(player2->board);
+    freePlayer(player2);
     free(player2);
+    
     return 0;
 
 }

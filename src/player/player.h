@@ -15,5 +15,6 @@ typedef struct{
 void placeShips(Player* player, int nb_ships);
 int placeShipOnBoard(Board* board, Ship* ship);
 void initPlayer(Player* player);
+void freePlayer(Player* player);
 
 #endif

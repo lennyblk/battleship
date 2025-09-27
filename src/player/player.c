@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 #include "player.h"
 
 
@@ -87,8 +88,6 @@ int placeShipOnBoard(Board* board, Ship* ship) {
     
     return 1;
 }
-#include <string.h>
-#include "player.h"
 
 void initPlayer(Player* player) {
     printf("Entrez le nom du joueur: ");
@@ -98,9 +97,25 @@ void initPlayer(Player* player) {
     player->name = malloc(strlen(name) + 1);
     strcpy(player->name, name);
 
+    free(name);
+
     Board* board = malloc(sizeof(Board));
     initBoard(board);
     player->board = board;
 
+}
+
+void freePlayer(Player* player) {
+    if (player) {
+        if (player->name) {
+            free(player->name);
+        }
+        if (player->board) {
+            free(player->board);
+        }
+        if (player->ships) {
+            free(player->ships);
+        }
+    }
 }
 
